@@ -1,41 +1,80 @@
-# 臺灣營業稅BLR網路申報匯出模組（Odoo 19）
+# 臺灣營業稅申報模組
 
-**臺灣營業稅BLR網路申報匯出模組**：從 Odoo 的會計資料產生營業稅(BLR)媒體申報匯入檔（TXT / TET_U），並提供下載、壓縮打包功能。
+適用於 Odoo 19 Community 的臺灣營業稅申報模組，提供：
 
-## 功能特點
-- 公司層級欄位：設定營業人資料（統一編號、申報相關欄位）
-- 發票/ 分錄欄位：補充 BLR 匯出所需資料
-- 匯出精靈：依申報期間產出 TET_U 並可打包 ZIP
+- 營業稅媒體申報檔（ZIP）匯出
+- 401 / 403 / 404 官方格式 Excel 申報書匯出
+- 進銷項核對表（Excel）
+- 單據層級的臺灣營業稅申報欄位維護
+- 發票字軌號碼、課稅別與扣抵欄位的輔助帶入
 
-## 支援版本
-- Odoo 19.0 Community / Enterprise
+## 支援環境
 
-## 安裝與使用
-1. 將 `tw_blr_vat_export/` 放到你的 Odoo `addons_path`
-2. 重啟 Odoo，在 Apps 搜尋並安裝本模組
-3. 於公司設定及發票/分錄中填入必要資料，使用匯出精靈選擇期間後匯出
+- Windows 自架版 Odoo 19 Community
+- Linux 自架版 Odoo 19 Community
+- Odoo.sh
+- 不支援 Odoo Online
 
-## 授權
-LGPL-3.0-or-later
+## 模組依賴
 
----
+- `account`
 
-# Taiwan VAT BLR Online Filing Export Module (Odoo 19)
+本模組不需要額外第三方 Python 套件。
 
-**Taiwan VAT BLR Online Filing Export Module**: generate VAT (BLR) media filing import file (TXT/TET_U) from Odoo accounting data and provide downloadable zip.
+## 主要功能
 
-## Features
-- Company-level fields: configure VAT ID and related fields
-- Invoice/Journal entry fields: add BLR-specific data
-- Export wizard: produce TET_U file for a filing period, optionally zipped
+### 1. 營業稅媒體申報檔（ZIP）
 
-## Supported Versions
-- Odoo 19.0 Community / Enterprise
+可匯出營業稅媒體申報所需資料，供臺灣營業稅申報流程使用。
 
-## Installation & Usage
-1. Place `tw_blr_vat_export/` in your Odoo `addons_path`
-2. Restart Odoo and install the module from Apps
-3. Populate company and invoice fields, then export via wizard
+### 2. 401 / 403 / 404 申報書 Excel
 
-## License
-LGPL-3.0-or-later
+內建官方空白申報書模板，可直接產生：
+
+- 401 申報書
+- 403 申報書
+- 404 申報書
+
+### 3. 進銷項核對表（Excel）
+
+可匯出進銷項核對表，供申報前人工核對使用。
+
+### 4. 單據申報欄位維護
+
+在發票或帳單上可維護：
+
+- 申報格式代號
+- 發票字軌與號碼
+- 其他憑證識別欄位
+- 課稅別
+- 扣抵代號
+
+## 安裝方式
+
+1. 將模組資料夾 `tw_blr_vat_export` 放入 Odoo 可讀取的 `addons` 路徑。
+2. 以管理員登入 Odoo。
+3. 進入 `應用程式`。
+4. 啟動開發人員模式後，執行 `更新應用程式列表`。
+5. 搜尋 `臺灣營業稅申報模組`。
+6. 按 `啟動` 安裝模組。
+
+## 升級方式
+
+1. 備份資料庫。
+2. 用新版模組覆蓋原本的 `tw_blr_vat_export` 資料夾。
+3. 如果本次更新包含 `.py` 檔案變更，請先重啟 Odoo 服務。
+4. 以管理員登入 Odoo。
+5. 進入 `應用程式`。
+6. 搜尋 `臺灣營業稅申報模組`。
+7. 按 `升級`。
+
+## 注意事項
+
+- 本模組 technical name 維持 `tw_blr_vat_export`，方便既有資料庫直接升級。
+- 對外正式文件以營業稅申報主表與媒體申報檔為主。
+- 使用者自行攜帶的原始憑證、扣抵聯、折讓單、海關文件與其他佐證文件，不由本模組生成。
+- 若未整合外部發票來源模組，`自動帶入發票字軌與號碼` 只會提示目前無可用來源。
+
+## 版本
+
+目前發行版本：`1.5.0`

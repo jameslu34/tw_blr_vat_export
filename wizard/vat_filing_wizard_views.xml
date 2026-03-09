@@ -1,0 +1,47 @@
+<odoo>
+  <record id="view_blr_vat_export_wizard_form" model="ir.ui.view">
+    <field name="name">tw.vat.filing.wizard.form</field>
+    <field name="model">tw.vat.filing.wizard</field>
+    <field name="arch" type="xml">
+      <form string="臺灣營業稅申報" create="false">
+        <group>
+          <field name="company_id"/>
+          <field name="year_roc"/>
+          <field name="month"/>
+          <field name="filing_code"/>
+          <field name="total_pay_code"/>
+          <field name="tax_rate_percent"/>
+          <field name="special_tax_rate_percent"/>
+        </group>
+        <footer>
+          <button string="產生營業稅媒體申報檔 (ZIP)" type="object" name="action_generate_zip" class="btn-primary"/>
+          <button string="產生進銷項核對表 (Excel)" type="object" name="action_generate_paper_xlsx" class="btn-secondary"/>
+          <button string="關閉" special="cancel" class="btn-secondary"/>
+        </footer>
+        <group invisible="export_zip == False">
+          <field name="export_zip_name" readonly="1"/>
+          <field name="export_zip" filename="export_zip_name" readonly="1"/>
+          <field name="check_report" readonly="1" nolabel="1"/>
+        </group>
+        <group invisible="paper_xlsx == False">
+          <field name="paper_xlsx_name" readonly="1"/>
+          <field name="paper_xlsx" filename="paper_xlsx_name" readonly="1"/>
+          <field name="paper_check_report" readonly="1" nolabel="1"/>
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_blr_vat_export_wizard" model="ir.actions.act_window">
+    <field name="name">臺灣營業稅申報</field>
+    <field name="res_model">tw.vat.filing.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+
+  <menuitem id="menu_blr_vat_export_root"
+            name="臺灣營業稅申報"
+            parent="account.menu_finance"
+            sequence="55"
+            action="action_blr_vat_export_wizard"/>
+</odoo>

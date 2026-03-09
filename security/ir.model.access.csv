@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tw_blr_vat_export_wizard,access_tw_vat_filing_wizard,model_tw_vat_filing_wizard,account.group_account_manager,1,1,1,1
+access_tw_vat_paper_template_system,access_tw_vat_paper_template_system,model_tw_vat_paper_template,base.group_system,1,1,1,1

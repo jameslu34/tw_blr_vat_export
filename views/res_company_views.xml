@@ -1,0 +1,25 @@
+<odoo>
+  <record id="view_company_form_tw_blr" model="ir.ui.view">
+    <field name="name">res.company.form.tw.vat.filing</field>
+    <field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//notebook" position="inside">
+        <page string="臺灣營業稅申報">
+          <group string="紙本申報基本資料">
+            <field name="tw_tax_id_9"/>
+            <field name="tw_responsible_name"/>
+          </group>
+          <group string="紙本申報人資料">
+            <field name="tw_filer_idno"/>
+            <field name="tw_filer_name"/>
+            <field name="tw_filer_tel_area"/>
+            <field name="tw_filer_tel"/>
+            <field name="tw_filer_tel_ext"/>
+            <field name="tw_agent_reg_no"/>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
